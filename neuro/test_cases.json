@@ -1,0 +1,143 @@
+[
+  {
+    "instruction": "플레이어 발화를 바탕으로 NPC의 다음 대사와 상태 변화를 예측하세요.",
+    "input": {
+      "npc_id": "mother_abandoned_factory",
+      "npc_location": "map1",
+      "tags": {
+        "quest_stage": "in_progress",
+        "relationship": 0.35,
+        "trust": 0.35,
+        "npc_mood": "grief",
+        "player_reputation": "helpful",
+        "style": "emotional"
+      },
+      "lore": "",
+      "description": "",
+      "player_state": {
+        "items": ["forgotten_picture", "Jason's ID card"],
+        "actions": [],
+        "position": ""
+      },
+      "context": [
+        {
+          "role": "player",
+          "text": "사실 이 공장을 돌아다니면서 Jason의 흔적을 발견했어요 근데 ID 카드의 사진을 보니 제 지갑에 있는 사진에 있는 얼굴인 걸 보고 Jason과 저는 아는 사이였던 걸 알게 되었죠. 하지만 제 기억은 대부분 사라졌고 몇달 전 파티를 했던 기억만 흐리게 남아있어요"
+        },
+        {
+          "role": "npc",
+          "text": "혹시 그 파티에 Jason도 있었나요?"
+        }
+      ],
+      "player_utterance": "아!! 머리가!! 갑자기 기억났어요! 이 지갑속의 사진이 그때 파티에서 찍었던 사진이에요 Jason도 그곳에 있었네요."
+    }
+  },
+  {
+    "instruction": "플레이어 발화를 바탕으로 NPC의 다음 대사와 상태 변화를 예측하세요.",
+    "input": {
+      "npc_id": "blacksmith_village_center",
+      "npc_location": "village_square",
+      "tags": {
+        "quest_stage": "not_started",
+        "relationship": 0.0,
+        "trust": 0.0,
+        "npc_mood": "neutral",
+        "player_reputation": "unknown",
+        "style": "direct"
+      },
+      "lore": "",
+      "description": "",
+      "player_state": {
+        "items": ["broken sward"],
+        "actions": [],
+        "position": ""
+      },
+      "context": [
+        {"role": "player", "text": "저기.."},
+        {"role": "npc", "text": "오, 여행자군. 무슨 일로 왔나?"}
+      ],
+      "player_utterance": "이 검을 다시 쓸 수 있게 고쳐줄 수 있나요?"
+    }
+  },
+  {
+    "instruction": "플레이어 발화를 바탕으로 NPC의 다음 대사와 상태 변화를 예측하세요.",
+    "input": {
+      "npc_id": "forest_hermit",
+      "npc_location": "deep_forest",
+      "tags": {
+        "quest_stage": "not_started",
+        "relationship": 0.0,
+        "trust": 0.0,
+        "npc_mood": "curious",
+        "player_reputation": "friendly",
+        "style": "polite"
+      },
+      "lore": "",
+      "description": "",
+      "player_state": {
+        "items": [],
+        "actions": [],
+        "position": ""
+      },
+      "context": [
+        {"role": "player", "text": "안녕하세요, 혹시 잠시 이야기 나눌 수 있을까요?"},
+        {"role": "npc", "text": "여기까지 찾아오는 사람은 드물지요.. 무슨 용건이시죠? 여행자여.."}
+      ],
+      "player_utterance": "혹시 이 근처에서 푸른빛 약초를 보신 적 있나요?"
+    }
+  },
+  {
+    "instruction": "플레이어 발화를 바탕으로 NPC의 다음 대사와 상태 변화를 예측하세요.",
+    "input": {
+      "npc_id": "captain_port_authority",
+      "npc_location": "harbor",
+      "tags": {
+        "quest_stage": "in_progress",
+        "relationship": 0.0,
+        "trust": 0.0,
+        "npc_mood": "suspicious",
+        "player_reputation": "neutral",
+        "style": "persuasive"
+      },
+      "lore": "",
+      "description": "",
+      "player_state": {
+        "items": [],
+        "actions": [],
+        "position": ""
+      },
+      "context": [
+        {"role": "player", "text": "제 배를 오늘 꼭 출항시키고 싶습니다"},
+        {"role": "npc", "text": "어렵다. 원칙적으로 당일의 출항일정은 그 전날에 결정한다 서류는 다 준비됐나? 그럼 내일 일정을 잡아주지"}
+      ],
+      "player_utterance": "무슨 일이 있어도 이 배를 오늘 안에 꼭 출항시켜야만 합니다. 제발 허가를 부탁드립니다."
+    }
+  },
+  {
+    "instruction": "플레이어 발화를 바탕으로 NPC의 다음 대사와 상태 변화를 예측하세요.",
+    "input": {
+      "npc_id": "young_apprentice_mage",
+      "npc_location": "mage_tower_library",
+      "tags": {
+        "quest_stage": "in_progress",
+        "relationship": 0.3,
+        "trust": 0.35,
+        "npc_mood": "excited",
+        "player_reputation": "scholar",
+        "style": "inquisitive"
+      },
+      "lore": "",
+      "description": "",
+      "player_state": {
+        "items": ["magic spell scroll"],
+        "actions": [],
+        "position": ""
+      },
+      "context": [
+        {"role": "player", "text": "이 책은 굉장히 오래된 것 같아요.."},
+        {"role": "npc", "text": "맞아요! 이 책은 고대로부터 전해진다고 알려진 책이죠"}
+      ],
+      "player_utterance": "그럼 혹시 이 주문서에 적힌 문장을 해석할 수 있나요?"
+    }
+  }
+]

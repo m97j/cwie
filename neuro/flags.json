@@ -1,0 +1,11 @@
+{
+  "ALL_FLAGS": [
+    "give_item",
+    "give_hint",
+    "change_npc_state",
+    "change_game_state",
+    "change_player_state",
+    "npc_action",
+    "unlock_hidden_path"
+  ]
+}

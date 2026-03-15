@@ -1,0 +1,10 @@
+gradio==6.9.0
+torch==2.8.0
+numpy==2.0.2
+datasets==4.0.0
+transformers==4.55.4
+peft==0.17.1
+scikit-learn==1.6.1
+sentence-transformers==3.0.1
+python-dotenv==1.0.1
+huggingface_hub==0.34.4  # 필요시만 추가
