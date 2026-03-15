@@ -1,5 +1,5 @@
 # Core Dependencies
-torch   # PyTorch
+torch                   # PyTorch
 transformers>=4.45.0
 peft>=0.12.0
 datasets
