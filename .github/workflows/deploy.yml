@@ -28,26 +28,15 @@ jobs:
         if: steps.neuro_changed.outputs.changed == 'true'
         run: pip install "huggingface_hub[cli]"
 
-      - name: Deploy Gradio Space
+      - name: Deploy Gradio Space (Neuro Engine)
         if: steps.neuro_changed.outputs.changed == 'true'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_HUB_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep "^neuro/")
-
-          ARGS=""
-          for FILE in $CHANGED_FILES; do
-            BASENAME=$(basename "$FILE")
-            ARGS="$ARGS --files $FILE:$BASENAME"
-          done
-
-          hf api commit \
-            --repo-id m97j/neuro-engine \
+          hf upload m97j/neuro-engine neuro/ . \
             --repo-type space \
-            --commit-message "$HF_HUB_COMMIT_MESSAGE" \
-            $ARGS
-
+            --delete "." \
+            --commit-message "${{ github.event.head_commit.message }}"
 
   deploy-docker:
     runs-on: ubuntu-latest
@@ -69,22 +58,13 @@ jobs:
         if: steps.symbolic_changed.outputs.changed == 'true'
         run: pip install "huggingface_hub[cli]"
 
-      - name: Deploy Docker Space
+      - name: Deploy Docker Space (Symbolic Processor)
         if: steps.symbolic_changed.outputs.changed == 'true'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HF_HUB_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep "^symbolic/")
-
-          ARGS=""
-          for FILE in $CHANGED_FILES; do
-            BASENAME=$(basename "$FILE")
-            ARGS="$ARGS --files $FILE:$BASENAME"
-          done
-
-          hf api commit \
-            --repo-id m97j/symbolic-processor \
+          hf upload m97j/symbolic-processor symbolic/ . \
             --repo-type space \
-            --commit-message "$HF_HUB_COMMIT_MESSAGE" \
-            $ARGS
+            --delete "." \
+            --commit-message "${{ github.event.head_commit.message }}"
