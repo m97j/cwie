@@ -21,32 +21,32 @@ def ping():
     return {"status": "awake"}
 
 
-with gr.Blocks() as demo:
-    gr.Markdown("## CWIE Core Model Inference")
+# with gr.Blocks() as demo:
+#     gr.Markdown("## CWIE Core Model Inference")
 
-    with gr.Tab("Web Test UI"):
-        npc_id = gr.Textbox(label="NPC ID")
-        npc_loc = gr.Textbox(label="NPC Location")
-        player_utt = gr.Textbox(label="Player Utterance")
-        npc_resp = gr.Textbox(label="NPC Response")
-        deltas = gr.JSON(label="Deltas")
-        flags = gr.JSON(label="Flags Probabilities")
-        btn = gr.Button("Run Inference")
+#     with gr.Tab("Web Test UI"):
+#         npc_id = gr.Textbox(label="NPC ID")
+#         npc_loc = gr.Textbox(label="NPC Location")
+#         player_utt = gr.Textbox(label="Player Utterance")
+#         npc_resp = gr.Textbox(label="NPC Response")
+#         deltas = gr.JSON(label="Deltas")
+#         flags = gr.JSON(label="Flags Probabilities")
+#         btn = gr.Button("Run Inference")
 
-        # Web Test 전용 (api_name 제거)
-        btn.click(
-            fn=gradio_infer,
-            inputs=[npc_id, npc_loc, player_utt],
-            outputs=[npc_resp, deltas, flags]
-        )
+#         # Web Test 전용 (api_name 제거)
+#         btn.click(
+#             fn=gradio_infer,
+#             inputs=[npc_id, npc_loc, player_utt],
+#             outputs=[npc_resp, deltas, flags]
+#         )
 
-    # ping 엔드포인트 (상태 확인/깨우기)
-    gr.Button("Ping Server").click(
-        fn=ping,
-        inputs=[],
-        outputs=[],
-        api_name="ping"
-    )
+#     # ping 엔드포인트 (상태 확인/깨우기)
+#     gr.Button("Ping Server").click(
+#         fn=ping,
+#         inputs=[],
+#         outputs=[],
+#         api_name="ping"
+#     )
 
 
 if __name__ == "__main__":

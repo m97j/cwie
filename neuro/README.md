@@ -1,5 +1,5 @@
 ---
-title: CWIE Core Model Inference Server
+title: CWIE Core Model Inference
 emoji: 🤖
 colorFrom: blue
 colorTo: pink
@@ -8,9 +8,9 @@ sdk_version: "6.9.0"
 app_file: app.py
 ---
 
-# CWIE 메인 모델 추론 서버 (neuro engine)
+# CWIE Core 추론 서버 (neuro engine)
 
-이 Space는 **Cognitive World Interaction Engine의 메인 모델**의 추론 API와 간단한 Gradio UI를 제공합니다.  
+이 Space는 **Cognitive World Interaction Engine의 Core Model**의 추론 API와 간단한 Web Test용 Gradio UI를 제공합니다.  
 Hugging Face Hub에 업로드된  
 [Base model](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)과
 [LoRA adapter model](https://huggingface.co/m97j/cwie-core)을 로드하여,  

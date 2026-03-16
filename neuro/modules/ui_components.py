@@ -1,7 +1,7 @@
 import gradio as gr
 from .case_loader import load_case, run_case
 
-# 시연용 케이스 이름 하드코딩
+# test case names
 CASE_NAMES = [
     "폐공장에서 NPC와 대화하는 장면",
     "마을 대장장이와 무기 수리에 대해 대화하는 장면",
@@ -11,7 +11,7 @@ CASE_NAMES = [
 ]
 
 def format_case_info(case: dict) -> dict:
-    """케이스 정보를 보기 좋게 정리해서 반환"""
+    """returns formatted case info for UI display"""
     inp = case["input"]
     tags = inp.get("tags", {})
     context_lines = [f"{h['role'].upper()}: {h['text']}" for h in inp.get("context", [])]
@@ -35,25 +35,25 @@ def format_case_info(case: dict) -> dict:
 def build_ui():
     with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="purple")) as demo:
         gr.Markdown("""
-        # 👾 PersonaChatEngine HF-Serve
-        **게임 내 NPC 메인 모델 추론 서버**  
-        Qwen 3B 기반 LoRA 파인튜닝 모델을 사용하여 NPC 대사를 생성합니다.
+        # 👾 CWIE Neuro Engine
+        **CWIE Core 모델 추론 서버**  
+        Qwen 3B 기반 LoRA 파인튜닝 모델을 사용하여 NPC 대사 생성 및 게임 상태변화를 예측합니다.
         """)
 
         with gr.Row():
             gr.Button("📄 상세 문서 보기",
-                      link="https://huggingface.co/spaces/m97j/PersonaChatEngine_HF-serve/blob/main/README.md")
+                      link="https://huggingface.co/spaces/m97j/neuro-engine/blob/main/README.md")
             gr.Button("💻 Colab 노트북 열기",
                       link="https://colab.research.google.com/drive/1_-qH8kdoU2Jj58TdaSnswHex-BFefInq?usp=sharing#scrollTo=cFJGv8BJ8oPD")
 
-        gr.Markdown("### 🎯 테스트 케이스 기반 간단 실행")
-        gr.Markdown("⚠️ 추론에는 수 초 ~ 최대 1분 정도 소요될 수 있습니다. 잠시만 기다려주세요.")
+        gr.Markdown("### 🎯 테스트 케이스 기반 Demo")
+        gr.Markdown("⚠️ 추론에는 수 분 ~ 최대 수십 분 정도 소요될 수 있습니다. 잠시만 기다려주세요.")
 
         with gr.Row():
             case_dropdown = gr.Dropdown(choices=CASE_NAMES, label="테스트 케이스 선택", value=CASE_NAMES[0])
             load_btn = gr.Button("케이스 불러오기")
 
-        # 케이스 정보 표시 영역
+        # case info display
         with gr.Row():
             with gr.Column():
                 npc_id = gr.Textbox(label="NPC ID", interactive=False)
@@ -71,7 +71,7 @@ def build_ui():
                 player_state = gr.JSON(label="Player State")
                 context = gr.Textbox(label="Context", lines=6, interactive=False)
 
-        # Player Utterance는 별도 입력창
+        # Player Utterance
         player_input = gr.Textbox(label="Player Utterance", lines=2)
 
         run_btn = gr.Button("🚀 Run Inference", variant="primary")
@@ -79,10 +79,10 @@ def build_ui():
         deltas = gr.JSON(label="Deltas")
         flags = gr.JSON(label="Flags Probabilities")
 
-        # 케이스 불러오기 동작
+        # case loading function
         def on_load_case(name):
             idx = CASE_NAMES.index(name)
-            case = load_case(idx)  # TEST_CASES 직접 접근 대신 load_case 사용
+            case = load_case(idx)  
             info = format_case_info(case)
             return (
                 info["npc_id"], info["npc_location"], info["quest_stage"],
@@ -102,7 +102,7 @@ def build_ui():
             ]
         )
 
-        # 추론 실행
+        # execute inference
         run_btn.click(
             fn=lambda name, utt: run_case(CASE_NAMES.index(name), utt),
             inputs=[case_dropdown, player_input],
@@ -111,7 +111,7 @@ def build_ui():
 
         gr.Markdown("""
         ---
-        ⚠️ **실제 게임 파이프라인 테스트**는 [ai-server Swagger](https://huggingface.co/spaces/m97j/PersonaChatEngine_ai_server)에서 진행하세요.
+        ⚠️ **실제 게임 파이프라인 테스트**는 [symbolic-processor Swagger](https://huggingface.co/spaces/m97j/symbolic-processor)에서 진행하세요.
         """)
 
     return demo
