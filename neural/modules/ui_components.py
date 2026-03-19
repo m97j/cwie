@@ -35,9 +35,8 @@ def format_case_info(case: dict) -> dict:
 def build_ui():
     with gr.Blocks(theme=gr.themes.Soft(primary_hue="blue", secondary_hue="purple")) as demo:
         gr.Markdown("""
-        # 👾 CWIE Neuro Engine
-        **CWIE Core 모델 추론 서버**  
-        Qwen 3B 기반 LoRA 파인튜닝 모델을 사용하여 NPC 대사 생성 및 게임 상태변화를 예측합니다.
+        # 👾 CWIE Neural Engine
+        Qwen 3B 기반 LoRA 파인튜닝 모델을 사용하여 NPC 대사생성, 게임 상태변화 예측등 세계와 상호작용 하는 엔진을 실행합니다.
         """)
 
         with gr.Row():

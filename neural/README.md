@@ -8,7 +8,7 @@ sdk_version: "6.9.0"
 app_file: app.py
 ---
 
-# ⚙️ Neural Engine (neuro/)
+# ⚙️ Neural Engine (neural/)
 
 이 Space는 **Cognitive World Interaction Engine의 Core Model**의 추론 API와 간단한 Web Test용 Gradio UI를 제공합니다.  
 Hugging Face Hub에 업로드된  
